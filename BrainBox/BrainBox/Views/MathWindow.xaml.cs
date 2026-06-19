@@ -31,6 +31,7 @@ namespace BrainBox.Views
         List<int> numbers = new List<int>();
         string solution = "";
         int timeLeft = 80;
+        bool zavrsena = false;
         DispatcherTimer timer;
 
         public MathWindow(PlayerProfile playerProfile)
@@ -40,6 +41,7 @@ namespace BrainBox.Views
 
             LoadMathCombination();
             StartTimer();
+            this.Loaded += (s, e) => txtExpression.Focus();
 
             txtExpression.KeyDown += TxtExpression_KeyDown;
         }
@@ -111,8 +113,17 @@ namespace BrainBox.Views
             if (timeLeft <= 0)
             {
                 timer.Stop();
-                EndGame(false, false, 0, "Времето истече!");
+                string expr = txtExpression.Text.Trim();
+                if (expr == "")
+                {
+                    EndGame(false, false, 0, "Времето истече!");
+                }
+                else
+                {
+                    ConfirmAnswer(null, null);
+                }
             }
+
         }
 
         private void ConfirmAnswer(object sender, RoutedEventArgs e)
@@ -177,6 +188,8 @@ namespace BrainBox.Views
 
         private void EndGame(bool exact, bool close, double rezultat, string reason)
         {
+            if (zavrsena) return;
+            zavrsena = true;
             int score = 0;
             string msg;
 
