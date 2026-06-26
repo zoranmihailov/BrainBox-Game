@@ -9,7 +9,7 @@ namespace BrainBox.Models
     public class PlayerProfile
     {
         public string Name { get; set; }
-        public Dictionary<string, GameScore> Scores { get; set; } = new()
+        public Dictionary<string, GameScore> Scores { get; set; } = new Dictionary<string, GameScore>()
         {
             { "Wordle",      new GameScore { MaxScore = 20 } },
             { "Matematika",  new GameScore { MaxScore = 30 } },

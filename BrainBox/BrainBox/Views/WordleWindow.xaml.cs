@@ -330,12 +330,8 @@ namespace BrainBox.Views
 
         private int CalculateScore()
         {
-            int attemptBonus = (maxRows - currentRow) * 2;
-            int timeBonus = timeLeft / 5;
-            int total = 8 + attemptBonus + timeBonus;
-
-            if (total > 20) total = 20;
-            return total;
+            //ovde go trgnav odzimanjeto, sega i ako pogodi vo posleden obid ke dobie 20 poeni
+            return 20;
         }
 
         private void EndGame(bool won)

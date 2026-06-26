@@ -12,12 +12,16 @@ namespace BrainBox.Models
         public double Average { get; set; }
         public int GamesPlayed { get; set; }
         public int MaxScore { get; set; }
+        //ne zaboravaj da dodades i LastScore tuka...
+        public int LastScore { get; set; }
+
 
         public void UpdateScore(int newScore)
         {
             if (newScore > HighScore) HighScore = newScore;
             Average = ((Average * GamesPlayed) + newScore) / (GamesPlayed + 1);
             GamesPlayed++;
+            LastScore = newScore;
         }
     }
 }
