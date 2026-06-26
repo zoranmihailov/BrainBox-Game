@@ -61,12 +61,8 @@ namespace BrainBox.Views
             foreach (string line in lines)
             {
                 string word = line.Trim().ToUpper();
-                if (word.Length == wordLength)
-                {
-                    words.Add(word);
-                }
+                words.Add(word);
             }
-
             Random rnd = new Random();
             int index = rnd.Next(words.Count);
             secretWord = words[index];
